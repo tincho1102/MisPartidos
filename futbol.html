@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Partidos Vistos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="pelota.png" type="image/x-icon">
+</head>
+<body>
+
+    <h2>⚽ Mis Partidos</h2>
+
+    <div class="card">
+        <input type="text" id="equipo1" placeholder="Equipo local">
+        <input type="text" id="equipo2" placeholder="Equipo visitante">
+        <input type="text" id="resultado" placeholder="Resultado (0 - 0)">
+        
+        <label>Competición:</label>
+        <select id="competicion">
+            <option value="Liga Argentina">Liga Argentina</option>
+            <option value="Primera Nacional">Primera Nacional</option>
+            <option value="Federal A">Federal A</option>
+            <option value="Liga Argentina-Reserva">Liga Argentina-Reserva</option>
+            <option value="Copa Argentina">Copa Argentina </option>
+            <option value="Liga Tandilense">Liga Tandilense</option>
+
+            <option value="Copa Libertadores">Copa Libertadores</option>
+            <option value="Copa Sudamericana">Copa Sudamericana</option>
+            
+            <option value="Liga Brasil ">Liga Brasil</option>
+            <option value="Copa Brasil ">Copa Brasil</option>
+            <option value="Liga España ">Liga España</option>
+            <option value="Liga Italiana ">Liga Italiana</option>
+            <option value="Liga Inglesa">Liga Inglesa</option>
+            <option value="Liga Alemana">Liga Alemana</option>
+            <option value="Liga Francia">Liga Francia</option>
+
+            <option value="Copa España ">Copa España</option>
+            <option value="Copa Italiana ">Copa Italiana</option>
+            <option value="Copa Inglesa">Copa Inglesa</option>
+            <option value="Copa Alemana">Copa Alemana</option>
+            <option value="Copa Francia">Copa Francia</option>
+
+            <option value="Champions League">Champions League</option>
+            <option value="Europa League">Europa League</option>
+            <option value="Conference League">Conference League</option>
+
+            <option value="Eliminatorias UEFA">Eliminatorias UEFA</option>
+            <option value="Eliminatorias Conmebol">Eliminatorias Conmebol</option>
+            <option value="Copa America">Copa America</option>
+            <option value="Nations League">Nations League</option>
+            <option value="Eurocopa">Eurocopa</option>
+            <option value="Copa del Mundo">Copa del Mundo</option>
+            <option value="Mundial de Clubes">Mundial de Clubes</option>
+
+            <option value="Copa Intercontinental">Copa Intercontinental</option>
+            <option value="Repechaje Mundial">Repechaje Mundial</option>
+            <option value="Eliminatorias Eurocopa">Eliminatorias Eurocopa</option>
+            <option value="Amistoso">Amistoso</option>
+
+            
+            <option value="Otra Liga">Otra Liga</option>
+        </select>
+
+        <label>Instancia:</label>
+        <select id="instancia">
+            <option value="Liga">Liga</option>
+            <option value="Fase de Grupos">Fase de Grupos</option>
+            <option value="32avos">32avos</option>
+            <option value="16avos">16avos</option>
+            <option value="Octavos">Octavos</option>
+            <option value="Cuartos">Cuartos</option>
+            <option value="Semifinal">Semifinal</option>
+            <option value="Final">Final</option>
+            <option value="Repechaje">Repechaje</option>
+            <option value="Promocion">Promocion</option>
+        </select>
+
+        <input type="date" id="fecha">
+        <button id="btnGuardar">Guardar Partido</button>
+    </div>
+
+    <div id="listaPartidos"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
