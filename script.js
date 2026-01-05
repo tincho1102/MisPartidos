@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnGuardar').addEventListener('click', guardarPartido);
 });
 
-function guardarPartido() {
+const URL_WEB_APP = "https://script.google.com/macros/s/AKfycbyztWeF_4Z6J4aVdsELsqkC1hYn-IDbNrY4B5haWziGmWy_OloCUsrtzPS3XoBGnqqN/exec"; 
+
+async function guardarPartido() {
     const partido = {
-        id: Date.now(), // ID único basado en milisegundos
+        id: Date.now(),
         equipo1: document.getElementById('equipo1').value,
         equipo2: document.getElementById('equipo2').value,
         resultado: document.getElementById('resultado').value,
@@ -14,17 +16,29 @@ function guardarPartido() {
         fecha: document.getElementById('fecha').value
     };
 
-    if(!partido.equipo1 || !partido.fecha) {
-        alert("Por favor rellena los datos principales.");
-        return;
-    }
+    if(!partido.equipo1 || !partido.fecha) return alert("Completa los datos");
 
-    let partidos = JSON.parse(localStorage.getItem('misPartidos')) || [];
-    partidos.push(partido);
-    localStorage.setItem('misPartidos', JSON.stringify(partidos));
-    
-    limpiarFormulario();
-    mostrarPartidos();
+    // Guardar en Google Sheets
+    try {
+        const response = await fetch(URL_WEB_APP, {
+            method: 'POST',
+            mode: 'no-cors', // Importante para Google Scripts
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(partido)
+        });
+        
+        // También lo guardamos en LocalStorage para verlo rápido sin internet
+        let partidos = JSON.parse(localStorage.getItem('misPartidos')) || [];
+        partidos.push(partido);
+        localStorage.setItem('misPartidos', JSON.stringify(partidos));
+
+        alert("¡Partido guardado en la nube!");
+        limpiarFormulario();
+        mostrarPartidos();
+    } catch (error) {
+        console.error("Error al guardar:", error);
+        alert("Error al conectar con la nube.");
+    }
 }
 
 function borrarPartido(id) {
@@ -72,4 +86,5 @@ function limpiarFormulario() {
     document.getElementById('equipo1').value = "";
     document.getElementById('equipo2').value = "";
     document.getElementById('resultado').value = "";
+
 }
